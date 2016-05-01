@@ -50,7 +50,9 @@ class DebugDisplayer implements DisplayerInterface
         $whoops = new Whoops();
         $whoops->allowQuit(false);
         $whoops->writeToOutput(false);
-        $whoops->pushHandler(new Handler());
+        $handler = new Handler();
+        $handler->setEditor('sublime');
+        $whoops->pushHandler($handler);
 
         return $whoops;
     }
